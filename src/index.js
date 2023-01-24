@@ -11,15 +11,20 @@ app.listen(PORT, async () => {
     console.log(`Server started at PORT :- ${PORT}`);
     await connect();
     console.log("MongoDB connected");
-    // const tweet = await Tweet.create({
-    //     content: "Third Tweet",
-    //     // userEmail: "a@b.com"
-    // })
+    // const comment = await Comment.create({ content: "It's the 11th Tweet Comment" });
+    const tweetRepo = new TweetRepository();
+    const tweet = await tweetRepo.create({
+        content: "12th Tweet it is !!!",
+        userEmail: "x@z1234.com",
+        // comments: comment
+    })
+    console.log(tweet);
     // const tweets = await Tweet.find({ userEmail: "a@b.com" });
     // const tweet = await Tweet.findById("63cccec9fbbcade18d1daf82");
     // tweet.userEmail = "b@c.com";
     // await tweet.save();
-    const tweetRepo = new TweetRepository();
-    const tweet = await tweetRepo.getWithComments("63cd5a511a1e616896f753fc");
-    console.log(tweet);
+    // const tweet = await tweetRepo.getWithComments("63cd5a511a1e616896f753fc");
+    // const tweetRepo = new TweetRepository();
+    // const tweet = await tweetRepo.getAll(1, 4);
+    // console.log(tweet[0].contentWithEmail);
 })
